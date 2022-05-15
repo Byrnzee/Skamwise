@@ -11,9 +11,20 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
      <title>Skamwise - Homepage</title>
 </head>
+<style>
+footer {
+  position: fixed;
+  bottom:0;
+  left:45%;
+  text-align: center;
+  padding: 3px;
+  background-color: DimGrey;
+  color: white;
+}
+</style>
 <body style="background-color:powderblue;">
     <pre><center>
-<img src="{% static 'skamwise.png' %}" alt="Logo" width="900" height="134"/>
+<img src="{% static 'skamwise.png' %}" alt="Logo" width="1550" height="409"/>
     </center></pre>
     <center>
 
@@ -32,13 +43,18 @@
 
         <form method="post" style="margin: 0">
             {% csrf_token %}
-            <p>Your URL is safe ! </p>
+          <div style="background-color:green">
+
+            <h1 style="color:black">Your URL is safe  ! </h1>
+            </div>
         </form>
 
     </div>
 
     </div>
     </center>
-
+    <div class=footer>
+        <footer> Ciarán Byrne x170367033 © 2022  </footer>
+    </div>
 </body>
 </html>

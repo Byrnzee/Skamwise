@@ -8,12 +8,24 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'myapp/static/main.css' %}">
      <title>Skamwise - Homepage</title>
 </head>
+<style>
+footer {
+  position: fixed;
+  bottom:0;
+  left:45%;
+  text-align: center;
+  padding: 3px;
+  background-color: DimGrey;
+  color: white;
+}
+</style>
+
 <body style="background-color:powderblue;">
     <pre><center>
-<img src="{% static 'skamwise.png' %}" alt="Logo" width="900" height="134"/>
+<img src="{% static 'skamwise.png' %}" alt="Logo" width="1550" height="400"/>
     </center></pre>
     <center>
 
@@ -30,6 +42,8 @@
 
     </div>
     </center>
-
+    <div class=footer>
+        <footer> Ciarán Byrne x170367033 © 2022  </footer>
+    </div>
 </body>
 </html>
