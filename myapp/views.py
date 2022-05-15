@@ -1,41 +1,48 @@
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
-from . import forms
-from django.views.generic.edit import FormView
-from .forms import NameForm
+from .forms import PostForm, WarningBlock, SafeBlock
+from .checks import urlCompare
 
-def regform(request):
-    form = NameForm()
-    if request.method == 'POST':
-        form = NameForm(request.POST)
-        html = 'we have recieved this form again'
+
+def new(request):
+    form = PostForm(request.Post)
+    return render(request, "blog/base.html", {"form": form})                # Create Webpage
+
+def urlchecker(request):
+
+    if request.method == 'POST':                                            # If we get in a URL
+        form = WarningBlock(request.POST)                                   # Create it
+        if form.is_valid():                                                 # And if it's Valid
+            if urlCompare(request.POST["search_box"]):                      # And if its in our List
+                return render(request,"blog/Warning.html",{"form": form})   # Render warning
+            else:
+                return render(request,"blog/Safe.html",{"form": form})      # or else render its safe
     else:
-        html = 'welcome for first time'
-    return render(request, 'blog/signup.html', {'html': html, 'form': form})
-
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
+        form = PostForm()
+    return render(request, 'blog/base.html', {'form': form})
 
 
 
-def get_name(request):
-    # if this is a POST request we need to process the form data
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = NameForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            # process the data in form.cleaned_data as required
-            # ...
-            # redirect to a new URL:
-            return HttpResponseRedirect('/thanks/')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = NameForm()
-
-    return render(request, 'name.html', {'form': form})
+#def search_bar(request):
+#    if request.method == 'GET':
+#        search_query = request.GET.get('search_box', None)
 
 
+# def get_name(request):
+#     # if this is a POST request we need to process the form data
+#     if request.method == 'POST':
+#         # create a form instance and populate it with data from the request:
+#         form = NameForm(request.POST)
+#         # check whether it's valid:
+#         if form.is_valid():
+#             # process the data in form.cleaned_data as required
+#             # ...
+#             # redirect to a new URL:
+#             return HttpResponseRedirect('/thanks/')
+#     # if a GET (or any other method) we'll create a blank form
+#     else:
+#         form = NameForm()
+#     return render(request, 'home.html', {'form': form})
 
 
 # def register(request):

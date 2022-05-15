@@ -1,9 +1,11 @@
 from django.urls import path
+from django.conf.urls import url
+from . import views
 from .views import *
+from django.contrib import admin
 
 urlpatterns = [
 
-    # path("", views.home, name='blog-home'),
-    # path("about/", views.about, name='blog-about'),
-    path('', regform, name='registration form'),
+    path('', urlchecker, name='base page')
+
 ]

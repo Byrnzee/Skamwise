@@ -1,21 +1,18 @@
-from django import forms
+from django.forms import ModelForm
+from .models import URLWarning, URLSafe
+from .models import Post
 
+class PostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = '__all__'
 
-class NameForm(forms.Form):
-    first_name = forms.CharField(initial='First Name', )
-    last_name = forms.CharField()
-    email = forms.EmailField(help_text='write your email', )
-    Address = forms.CharField(required=False, )
-    Technology = forms.CharField(initial='Django', disabled=True, )
-    age = forms.IntegerField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    re_password = forms.CharField(help_text='renter your password', widget=forms.PasswordInput)
+class WarningBlock(ModelForm):
+    class Meta:
+        model = URLWarning
+        fields = '__all__'
 
-    botcatcher = forms.CharField(widget=forms.HiddenInput, required=False)
-
-#Validation
-def clean_password(self):
-  password = self.cleaned_data['password']
-  if len(password) < 4:
-      raise forms.ValidationError("password is too short")
-  return password
+class SafeBlock(ModelForm):
+    class Meta:
+        model = URLSafe
+        fields = '__all__'
