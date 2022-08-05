@@ -22,31 +22,30 @@ footer {
   color: white;
 }
 </style>
-<body style="background-color:powderblue;">
+<body style="background-color:#d7eeff;">
     <pre><center>
-<img src="{% static 'skamwise.png' %}" alt="Logo" width="1550" height="409"/>
+<img style="border:1px solid black" src="{% static 'skamwise.png' %}" alt="Logo" width="1550" height="400"/>
     </center></pre>
     <center>
 
     <div class="container">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8 ">
 
         <form method="post" style="margin: 0">
             {% csrf_token %}
-            <input id="search_box" type="text" name="search_box">
-            <button id="search submit" type="submit">Submit</button>
+            <input placeholder="Enter URL here" style="text-align:center" class="form-control" id="search_box" type="text" name="search_box">
+           <button style="margin:50px" class="btn btn-primary btn-lg" id="search submit" type="submit" placeholder="Enter URL here">Submit</button>
         </form>
 
     </div>
     <div class="container">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-md-8 ">
 
         <form method="post" style="margin: 0">
             {% csrf_token %}
-            <div style="background-color:red">
-
-            <h1 style="color:black">Your URL is not safe  ! </h1>
-            </div>
+        <div class="alert alert-danger" role="alert">
+        This URL is not safe to browse !
+        </div>
 
         </form>
 

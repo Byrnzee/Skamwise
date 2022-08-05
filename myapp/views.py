@@ -23,6 +23,10 @@ def urlchecker(request):
 
 
 
+
+
+
+
 #def search_bar(request):
 #    if request.method == 'GET':
 #        search_query = request.GET.get('search_box', None)
